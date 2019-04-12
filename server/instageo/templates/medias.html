@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Найдено {{ medias|length }} фото
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        {% for media in medias %}
+            <div class="col-2 img-fluid img-thumbnail">
+                <div>
+                    <a href="https://www.instagram.com/p/{{ media.code }}" target="_blank">
+                        <img src="{{ media.image_versions2.candidates.1.url }}" class="rounded mx-auto d-block" alt="">
+                    </a>
+                </div>
+                <div class="text" id="card">
+                    <br>Автор: <a href="https://www.instagram.com/p/{{ media.code }}">{{ media.user.full_name }}</a>
+                    <br>Лайков: {{ media.like_count }}
+                    <br>Комментариев: {{ media.comment_count }}
+                    <br>Место: {{ media.location.name }}
+                    {% if media.likers %}
+                        Нравится:
+                        {% for user in media.likers|slice:":4" %}
+                            {{ user.username }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

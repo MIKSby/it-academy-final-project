@@ -1,0 +1,12 @@
+.idea
+venv
+server/__pycache__
+*.pyc
+blacklist.txt
+comments.txt
+followed.txt
+friends.txt
+instabot.log
+skipped.txt
+unfollowed.txt
+whitelist.txt
